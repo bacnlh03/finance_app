@@ -1,4 +1,7 @@
+import 'package:finance_app/src/presentation/bloc/auth/auth_state.dart';
+import 'package:finance_app/src/presentation/views/credential/sign_in_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
@@ -16,14 +19,16 @@ class AccountPage extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        CircleAvatar(
+        const CircleAvatar(
           radius: 28,
         ),
-        Text('Full name'),
-        Text('email@gmail.com'),
+        const Text('Full name'),
+        const Text('email@gmail.com'),
         GestureDetector(
-          onTap: () {},
-          child: ListTile(
+          onTap: () {
+            
+          },
+          child: const ListTile(
             title: Text('Change password'),
             trailing: Icon(
               Icons.arrow_forward_ios,
@@ -32,8 +37,16 @@ class AccountPage extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: () {},
-          child: ListTile(
+          onTap: () {
+            BlocProvider.of<AuthCubit>(context).loggedOut();
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SignInPage(),
+              ),
+            );
+          },
+          child: const ListTile(
             title: Text('Logout'),
             trailing: Icon(
               Icons.logout,

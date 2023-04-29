@@ -1,13 +1,11 @@
-import 'package:finance_app/src/core/usecase.dart';
 import 'package:finance_app/src/domain/repositories/firebase_repository.dart';
 
-class SignOutUseCase implements FutureUseCase<void, NoParams> {
+class SignOutUseCase {
   final FirebaseRepository repository;
 
   const SignOutUseCase({required this.repository});
 
-  @override
-  Future<void> call(NoParams params) {
+  Future<void> call() {
     return repository.signOut();
   }
 }
